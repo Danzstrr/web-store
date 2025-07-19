@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Panel - Unli & Reseller</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --accent: #fd79a8;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --success: #00b894;
+            --warning: #fdcb6e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .store-container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .store-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .product-card {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-header {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--light) 0%, #dfe6e9 100%);
+        }
+
+        .product-header h3 {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .product-price span {
+            font-size: 16px;
+            color: #636e72;
+            font-weight: 400;
+        }
+
+        .product-features {
+            padding: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: #636e72;
+        }
+
+        .feature-item img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .product-actions {
+            padding: 0 20px 20px;
+            text-align: center;
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
+        }
+
+        .buy-btn:active {
+            transform: translateY(0);
+        }
+
+        .highlight-card {
+            position: relative;
+            border: 2px solid var(--accent);
+        }
+
+        .highlight-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(253, 121, 168, 0.3);
+        }
+
+        .contact-info {
+            background-color: var(--light);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-info p {
+            color: #636e72;
+            margin-bottom: 10px;
+        }
+
+        .contact-btn {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .contact-btn img {
+            width: 18px;
+            margin-right: 8px;
+        }
+
+        .contact-btn:hover {
+            background-color: #00a884;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .products-container {
+                flex-direction: column;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="store-container">
+        <div class="header">
+            <h1>Store Panel Premium</h1>
+            <p>Pilih paket yang sesuai dengan kebutuhan Anda</p>
+        </div>
+        
+        <div class="products-container">
+            <!-- Panel Unli -->
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>Panel Unli</h3>
+                    <div class="product-price">5K <span>/permanent</span></div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Akses unlimited panel</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Tanpa batas waktu</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Update rutin</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Support 24/7</span>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="buy-btn">Beli Sekarang</button>
+                </div>
+            </div>
+            
+            <!-- Reseller Panel -->
+            <div class="product-card highlight-card">
+                <div class="highlight-badge">POPULER</div>
+                <div class="product-header">
+                    <h3>Reseller Panel</h3>
+                    <div class="product-price">8K <span>/bulan</span></div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Akses panel reseller</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Bonus tools marketing</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Harga khusus reseller</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Support prioritas</span>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="buy-btn">Daftar Reseller</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <p>Butuh bantuan atau informasi lebih lanjut?</p>
+            <button class="contact-btn">
+                <img src="https://cdn-icons-png.flaticon.com/512/3178/3178158.png" alt="WhatsApp Icon">
+                Hubungi Kami
+            </button>
+        </div>
+    </div>
+</body>
+</html>
