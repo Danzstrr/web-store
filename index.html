@@ -6,10 +6,10 @@
     <title>Danz Store - Premium Products</title>
     <style>
         :root {
-            --primary: #6c5ce7;
-            --secondary: #a29bfe;
-            --accent: #fd79a8;
-            --dark: #2d3436;
+            --primary: #0088cc;  /* Telegram blue */
+            --secondary: #2ca5e0;
+            --accent: #ff7b00;
+            --dark: #17212b;
             --light: #f5f6fa;
             --success: #00b894;
             --warning: #fdcb6e;
@@ -24,7 +24,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #e6f7ff 0%, #cceeff 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -206,7 +206,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 14px;
-            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -219,7 +219,7 @@
 
         .buy-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
         }
 
         .buy-btn:active {
@@ -241,6 +241,13 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin-top: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .contact-info img {
@@ -256,6 +263,12 @@
         .contact-info span {
             color: var(--primary);
             margin-left: 5px;
+        }
+
+        .price-variants {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #666;
         }
 
         @media (max-width: 768px) {
@@ -280,74 +293,74 @@
     <div class="store-container">
         <div class="header">
             <h1>Danz Store</h1>
-            <p>Produk premium dengan kualitas terbaik</p>
+            <p>Premium products with the best quality</p>
         </div>
         
         <div class="categories">
-            <button class="category-btn active">Semua Produk</button>
-            <button class="category-btn">Panel</button>
+            <button class="category-btn active">All Products</button>
+            <button class="category-btn">Panels</button>
             <button class="category-btn">Shisui</button>
-            <button class="category-btn">Lainnya</button>
+            <button class="category-btn">Others</button>
         </div>
         
         <div class="products-container">
-            <!-- Panel -->
+            <!-- Panel Unli -->
             <div class="product-card">
                 <div class="product-header">
                     <h3>Panel Unli</h3>
-                    <div class="product-price">5K <span>/permanent</span></div>
+                    <div class="product-price">5K <span>/month</span></div>
                 </div>
                 
                 <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Akses unlimited panel</span>
+                        <span>Unlimited panel access</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Tanpa batas waktu</span>
+                        <span>Regular updates</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Update rutin</span>
+                        <span>24/7 support</span>
                     </div>
                 </div>
                 
                 <div class="product-actions">
                     <button class="buy-btn">
                         <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Beli Sekarang
+                        Order Now
                     </button>
                 </div>
             </div>
             
             <!-- Reseller Panel -->
             <div class="product-card">
-                <div class="product-badge">Populer</div>
+                <div class="product-badge">Popular</div>
                 <div class="product-header">
                     <h3>Reseller Panel</h3>
-                    <div class="product-price">8K <span>/bulan</span></div>
+                    <div class="product-price">8K <span>/month</span></div>
                 </div>
                 
                 <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Akses panel reseller</span>
+                        <span>Reseller panel access</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Bonus tools marketing</span>
+                        <span>Marketing tools</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Harga khusus reseller</span>
+                        <span>Special reseller price</span>
                     </div>
                 </div>
                 
                 <div class="product-actions">
                     <button class="buy-btn">
                         <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Beli Sekarang
+                        Order Now
                     </button>
                 </div>
             </div>
@@ -356,13 +369,14 @@
             <div class="product-card">
                 <div class="product-header">
                     <h3>SC Shisui</h3>
-                    <div class="product-price">15K <span>/month</span></div>
+                    <div class="product-price">5K <span>/month</span></div>
+                    <div class="price-variants">7K with free UP 1x</div>
                 </div>
                 
                 <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Akses SC Shisui</span>
+                        <span>SC Shisui access</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
@@ -377,7 +391,7 @@
                 <div class="product-actions">
                     <button class="buy-btn">
                         <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Beli Sekarang
+                        Order Now
                     </button>
                 </div>
             </div>
@@ -386,28 +400,28 @@
             <div class="product-card">
                 <div class="product-header">
                     <h3>Reseller Shisui</h3>
-                    <div class="product-price">25K <span>/month</span></div>
+                    <div class="product-price">10K <span>/month</span></div>
                 </div>
                 
                 <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Akses reseller Shisui</span>
+                        <span>Reseller Shisui access</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Bonus akun trial</span>
+                        <span>Free trial accounts</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Harga khusus</span>
+                        <span>Special price</span>
                     </div>
                 </div>
                 
                 <div class="product-actions">
                     <button class="buy-btn">
                         <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Beli Sekarang
+                        Order Now
                     </button>
                 </div>
             </div>
@@ -417,13 +431,13 @@
                 <div class="product-badge">Exclusive</div>
                 <div class="product-header">
                     <h3>Owner Shisui</h3>
-                    <div class="product-price">50K <span>/month</span></div>
+                    <div class="product-price">15K <span>/month</span></div>
                 </div>
                 
                 <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Akses owner Shisui</span>
+                        <span>Owner Shisui access</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
@@ -438,7 +452,7 @@
                 <div class="product-actions">
                     <button class="buy-btn">
                         <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Beli Sekarang
+                        Order Now
                     </button>
                 </div>
             </div>
@@ -447,28 +461,28 @@
             <div class="product-card">
                 <div class="product-header">
                     <h3>Partner Shisui</h3>
-                    <div class="product-price">35K <span>/month</span></div>
+                    <div class="product-price">20K <span>/month</span></div>
                 </div>
                 
                 <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Akses partner Shisui</span>
+                        <span>Partner Shisui access</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Komisi menarik</span>
+                        <span>Attractive commission</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Support khusus</span>
+                        <span>Special support</span>
                     </div>
                 </div>
                 
                 <div class="product-actions">
                     <button class="buy-btn">
                         <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Beli Sekarang
+                        Order Now
                     </button>
                 </div>
             </div>
@@ -477,13 +491,13 @@
             <div class="product-card">
                 <div class="product-header">
                     <h3>TK Shisui</h3>
-                    <div class="product-price">10K <span>/month</span></div>
+                    <div class="product-price">25K <span>/month</span></div>
                 </div>
                 
                 <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Akses TK Shisui</span>
+                        <span>TK Shisui access</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
@@ -498,7 +512,7 @@
                 <div class="product-actions">
                     <button class="buy-btn">
                         <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Beli Sekarang
+                        Order Now
                     </button>
                 </div>
             </div>
@@ -508,13 +522,13 @@
                 <div class="product-badge">New</div>
                 <div class="product-header">
                     <h3>Mods Shisui</h3>
-                    <div class="product-price">20K <span>/month</span></div>
+                    <div class="product-price">35K <span>/month</span></div>
                 </div>
                 
                 <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Akses mods Shisui</span>
+                        <span>Mods Shisui access</span>
                     </div>
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
@@ -529,18 +543,18 @@
                 <div class="product-actions">
                     <button class="buy-btn">
                         <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Beli Sekarang
+                        Order Now
                     </button>
                 </div>
             </div>
         </div>
         
         <div class="contact-section">
-            <h3>Butuh bantuan atau ingin bertanya?</h3>
-            <div class="contact-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670057.png" alt="WhatsApp Icon">
-                <p>Hubungi Danz: <span>6287826241859</span></p>
-            </div>
+            <h3>Need help or have questions?</h3>
+            <a href="https://t.me/danzz_store_1" class="contact-info" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon">
+                <p>Contact Danz: <span>t.me/danzz_store_1</span></p>
+            </a>
         </div>
     </div>
 
@@ -560,7 +574,8 @@
         document.querySelectorAll('.buy-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const productName = this.closest('.product-card').querySelector('h3').textContent;
-                alert(`Anda akan membeli: ${productName}\nSilahkan hubungi Danz di WhatsApp: 6287826241859`);
+                const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
+                window.open(`https://t.me/danzz_store_1?text=Hi%20Danz,%20I%20want%20to%20buy%20${encodeURIComponent(productName)}%20(${encodeURIComponent(productPrice)})`, '_blank');
             });
         });
     </script>
