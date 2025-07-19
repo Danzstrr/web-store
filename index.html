@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store Panel - Unli & Reseller</title>
+    <title>Danz Store - Premium Products</title>
     <style>
         :root {
             --primary: #6c5ce7;
@@ -13,6 +13,7 @@
             --light: #f5f6fa;
             --success: #00b894;
             --warning: #fdcb6e;
+            --danger: #d63031;
         }
         
         * {
@@ -26,7 +27,7 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             padding: 20px;
         }
@@ -36,9 +37,10 @@
             border-radius: 20px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
             overflow: hidden;
             transition: all 0.3s ease;
+            margin-bottom: 30px;
         }
 
         .store-container:hover {
@@ -55,7 +57,7 @@
         }
 
         .header h1 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 10px;
         }
@@ -67,21 +69,59 @@
             margin: 0 auto;
         }
 
-        .products-container {
+        .categories {
             display: flex;
-            flex-wrap: wrap;
+            background-color: var(--light);
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+            padding: 0 20px;
+        }
+
+        .category-btn {
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            position: relative;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            color: var(--primary);
+        }
+
+        .category-btn.active {
+            color: var(--primary);
+        }
+
+        .category-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
             padding: 30px;
-            gap: 20px;
         }
 
         .product-card {
-            flex: 1 1 300px;
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid #eee;
+            position: relative;
         }
 
         .product-card:hover {
@@ -89,27 +129,45 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 1;
+        }
+
         .product-header {
             padding: 20px;
             text-align: center;
             background: linear-gradient(135deg, var(--light) 0%, #dfe6e9 100%);
+            position: relative;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .product-header h3 {
-            font-size: 22px;
+            font-size: 20px;
             color: var(--dark);
             margin-bottom: 5px;
         }
 
         .product-price {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--primary);
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
         .product-price span {
-            font-size: 16px;
+            font-size: 14px;
             color: #636e72;
             font-weight: 400;
         }
@@ -121,13 +179,15 @@
         .feature-item {
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: #636e72;
+            font-size: 14px;
         }
 
         .feature-item img {
-            width: 20px;
-            margin-right: 10px;
+            width: 16px;
+            margin-right: 8px;
+            opacity: 0.7;
         }
 
         .product-actions {
@@ -139,14 +199,22 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: 600;
             width: 100%;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 16px;
+            font-size: 14px;
             box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .buy-btn img {
+            width: 16px;
+            margin-right: 8px;
         }
 
         .buy-btn:hover {
@@ -158,70 +226,51 @@
             transform: translateY(0);
         }
 
-        .highlight-card {
-            position: relative;
-            border: 2px solid var(--accent);
-        }
-
-        .highlight-badge {
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            background-color: var(--accent);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(253, 121, 168, 0.3);
-        }
-
-        .contact-info {
+        .contact-section {
             background-color: var(--light);
-            padding: 20px;
+            padding: 30px;
             text-align: center;
             border-top: 1px solid #eee;
         }
 
-        .contact-info p {
-            color: #636e72;
-            margin-bottom: 10px;
-        }
-
-        .contact-btn {
-            background-color: var(--success);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .contact-info {
             display: inline-flex;
             align-items: center;
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 15px;
         }
 
-        .contact-btn img {
-            width: 18px;
-            margin-right: 8px;
+        .contact-info img {
+            width: 24px;
+            margin-right: 10px;
         }
 
-        .contact-btn:hover {
-            background-color: #00a884;
-            transform: translateY(-2px);
+        .contact-info p {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .contact-info span {
+            color: var(--primary);
+            margin-left: 5px;
         }
 
         @media (max-width: 768px) {
-            .products-container {
-                flex-direction: column;
-            }
-            
-            .header {
-                padding: 25px 20px;
-            }
-            
             .header h1 {
-                font-size: 24px;
+                font-size: 26px;
+            }
+            
+            .products-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .category-btn {
+                padding: 12px 15px;
+                font-size: 14px;
             }
         }
     </style>
@@ -230,12 +279,19 @@
 <body>
     <div class="store-container">
         <div class="header">
-            <h1>Store Panel Premium</h1>
-            <p>Pilih paket yang sesuai dengan kebutuhan Anda</p>
+            <h1>Danz Store</h1>
+            <p>Produk premium dengan kualitas terbaik</p>
+        </div>
+        
+        <div class="categories">
+            <button class="category-btn active">Semua Produk</button>
+            <button class="category-btn">Panel</button>
+            <button class="category-btn">Shisui</button>
+            <button class="category-btn">Lainnya</button>
         </div>
         
         <div class="products-container">
-            <!-- Panel Unli -->
+            <!-- Panel -->
             <div class="product-card">
                 <div class="product-header">
                     <h3>Panel Unli</h3>
@@ -255,20 +311,19 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
                         <span>Update rutin</span>
                     </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Support 24/7</span>
-                    </div>
                 </div>
                 
                 <div class="product-actions">
-                    <button class="buy-btn">Beli Sekarang</button>
+                    <button class="buy-btn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
+                        Beli Sekarang
+                    </button>
                 </div>
             </div>
             
             <!-- Reseller Panel -->
-            <div class="product-card highlight-card">
-                <div class="highlight-badge">POPULER</div>
+            <div class="product-card">
+                <div class="product-badge">Populer</div>
                 <div class="product-header">
                     <h3>Reseller Panel</h3>
                     <div class="product-price">8K <span>/bulan</span></div>
@@ -287,25 +342,227 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
                         <span>Harga khusus reseller</span>
                     </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="buy-btn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
+                        Beli Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <!-- SC Shisui -->
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>SC Shisui</h3>
+                    <div class="product-price">15K <span>/month</span></div>
+                </div>
+                
+                <div class="product-features">
                     <div class="feature-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Support prioritas</span>
+                        <span>Akses SC Shisui</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Stable connection</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>High speed</span>
                     </div>
                 </div>
                 
                 <div class="product-actions">
-                    <button class="buy-btn">Daftar Reseller</button>
+                    <button class="buy-btn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
+                        Beli Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Reseller Shisui -->
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>Reseller Shisui</h3>
+                    <div class="product-price">25K <span>/month</span></div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Akses reseller Shisui</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Bonus akun trial</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Harga khusus</span>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="buy-btn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
+                        Beli Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Owner Shisui -->
+            <div class="product-card">
+                <div class="product-badge">Exclusive</div>
+                <div class="product-header">
+                    <h3>Owner Shisui</h3>
+                    <div class="product-price">50K <span>/month</span></div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Akses owner Shisui</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Full control panel</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Priority support</span>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="buy-btn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
+                        Beli Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Partner Shisui -->
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>Partner Shisui</h3>
+                    <div class="product-price">35K <span>/month</span></div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Akses partner Shisui</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Komisi menarik</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Support khusus</span>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="buy-btn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
+                        Beli Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <!-- TK Shisui -->
+            <div class="product-card">
+                <div class="product-header">
+                    <h3>TK Shisui</h3>
+                    <div class="product-price">10K <span>/month</span></div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Akses TK Shisui</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Basic features</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Stable connection</span>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="buy-btn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
+                        Beli Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mods Shisui -->
+            <div class="product-card">
+                <div class="product-badge">New</div>
+                <div class="product-header">
+                    <h3>Mods Shisui</h3>
+                    <div class="product-price">20K <span>/month</span></div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Akses mods Shisui</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Extra features</span>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
+                        <span>Premium support</span>
+                    </div>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="buy-btn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
+                        Beli Sekarang
+                    </button>
                 </div>
             </div>
         </div>
         
-        <div class="contact-info">
-            <p>Butuh bantuan atau informasi lebih lanjut?</p>
-            <button class="contact-btn">
-                <img src="https://cdn-icons-png.flaticon.com/512/3178/3178158.png" alt="WhatsApp Icon">
-                Hubungi Kami
-            </button>
+        <div class="contact-section">
+            <h3>Butuh bantuan atau ingin bertanya?</h3>
+            <div class="contact-info">
+                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670057.png" alt="WhatsApp Icon">
+                <p>Hubungi Danz: <span>6287826241859</span></p>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Simple category filter
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelector('.category-btn.active').classList.remove('active');
+                this.classList.add('active');
+                
+                // In a real implementation, you would filter products here
+                // This is just UI demonstration
+            });
+        });
+        
+        // Buy button click handler
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productName = this.closest('.product-card').querySelector('h3').textContent;
+                alert(`Anda akan membeli: ${productName}\nSilahkan hubungi Danz di WhatsApp: 6287826241859`);
+            });
+        });
+    </script>
 </body>
 </html>
