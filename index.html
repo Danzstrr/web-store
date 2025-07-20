@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danz Store - Premium Products</title>
+    <title>Danz Store - Premium Panels & Tools</title>
     <style>
         :root {
-            --primary: #0088cc;  /* Telegram blue */
-            --secondary: #2ca5e0;
-            --accent: #ff7b00;
-            --dark: #17212b;
-            --light: #f5f6fa;
-            --success: #00b894;
-            --warning: #fdcb6e;
-            --danger: #d63031;
+            --primary: #25D366; /* WhatsApp green */
+            --secondary: #128C7E;
+            --accent: #FF9800;
+            --dark: #075E54;
+            --light: #DCF8C6;
+            --text: #333333;
+            --gray: #ECE5DD;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #e6f7ff 0%, #cceeff 100%);
+            background-color: #f0f2f5;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -34,63 +33,48 @@
 
         .store-container {
             background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-        }
-
-        .store-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
-            position: relative;
         }
 
         .header h1 {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .header p {
+            font-size: 14px;
             opacity: 0.9;
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .categories {
             display: flex;
-            background-color: var(--light);
-            border-bottom: 1px solid #eee;
+            background-color: var(--gray);
             overflow-x: auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         .category-btn {
-            padding: 15px 20px;
+            padding: 12px 20px;
             background: none;
             border: none;
             font-weight: 600;
-            color: var(--dark);
+            color: var(--text);
             cursor: pointer;
-            position: relative;
             white-space: nowrap;
+            position: relative;
             transition: all 0.3s ease;
-        }
-
-        .category-btn:hover {
-            color: var(--primary);
         }
 
         .category-btn.active {
@@ -107,119 +91,79 @@
             background-color: var(--primary);
         }
 
-        .products-container {
+        .products-section {
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: var(--dark);
+            margin: 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
         .product-card {
             background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            padding: 20px;
             transition: all 0.3s ease;
             border: 1px solid #eee;
-            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
-        .product-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--accent);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 11px;
+        .product-name {
+            font-size: 18px;
             font-weight: 600;
-            z-index: 1;
-        }
-
-        .product-header {
-            padding: 20px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--light) 0%, #dfe6e9 100%);
-            position: relative;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .product-header h3 {
-            font-size: 20px;
-            color: var(--dark);
-            margin-bottom: 5px;
+            color: var(--text);
+            margin-bottom: 10px;
         }
 
         .product-price {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--primary);
             margin: 10px 0;
         }
 
-        .product-price span {
-            font-size: 14px;
-            color: #636e72;
-            font-weight: 400;
-        }
-
-        .product-features {
-            padding: 20px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            color: #636e72;
-            font-size: 14px;
-        }
-
-        .feature-item img {
-            width: 16px;
-            margin-right: 8px;
-            opacity: 0.7;
-        }
-
-        .product-actions {
-            padding: 0 20px 20px;
-            text-align: center;
+        .price-variant {
+            font-size: 16px;
+            color: #666;
+            margin: 5px 0;
         }
 
         .buy-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background-color: var(--primary);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 10px 15px;
+            border-radius: 6px;
             font-weight: 600;
             width: 100%;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 14px;
-            box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .buy-btn img {
-            width: 16px;
-            margin-right: 8px;
+            gap: 8px;
+            margin-top: 15px;
         }
 
         .buy-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
+            background-color: var(--secondary);
+            transform: translateY(-2px);
         }
 
         .buy-btn:active {
@@ -227,355 +171,279 @@
         }
 
         .contact-section {
-            background-color: var(--light);
-            padding: 30px;
+            background-color: var(--gray);
+            padding: 20px;
             text-align: center;
-            border-top: 1px solid #eee;
+            margin-top: 20px;
+            border-radius: 0 0 15px 15px;
         }
 
-        .contact-info {
+        .contact-title {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-btn {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
-            background-color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-top: 15px;
-            text-decoration: none;
+            gap: 10px;
             transition: all 0.3s ease;
         }
 
-        .contact-info:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        .whatsapp-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
         }
 
-        .contact-info img {
-            width: 24px;
-            margin-right: 10px;
-        }
-
-        .contact-info p {
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
             font-weight: 600;
-            color: var(--dark);
+            margin-left: 8px;
         }
 
-        .contact-info span {
-            color: var(--primary);
-            margin-left: 5px;
+        .badge-new {
+            background-color: var(--accent);
+            color: white;
         }
 
-        .price-variants {
-            margin-top: 5px;
-            font-size: 13px;
-            color: #666;
+        .badge-popular {
+            background-color: #E91E63;
+            color: white;
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 26px;
-            }
-            
-            .products-container {
+            .products-grid {
                 grid-template-columns: 1fr;
-                padding: 20px;
             }
             
-            .category-btn {
-                padding: 12px 15px;
-                font-size: 14px;
+            .header h1 {
+                font-size: 24px;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="store-container">
         <div class="header">
             <h1>Danz Store</h1>
-            <p>Premium products with the best quality</p>
+            <p>Premium Panels & Tools</p>
         </div>
         
         <div class="categories">
             <button class="category-btn active">All Products</button>
-            <button class="category-btn">Panels</button>
-            <button class="category-btn">Shisui</button>
-            <button class="category-btn">Others</button>
+            <button class="category-btn">Pterodactyl Panels</button>
+            <button class="category-btn">SC Bug WA</button>
+            <button class="category-btn">Reseller/Owner</button>
         </div>
         
-        <div class="products-container">
-            <!-- Panel Unli -->
-            <div class="product-card">
-                <div class="product-header">
-                    <h3>Panel Unli</h3>
-                    <div class="product-price">5K <span>/month</span></div>
-                </div>
-                
-                <div class="product-features">
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Unlimited panel access</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Regular updates</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>24/7 support</span>
-                    </div>
-                </div>
-                
-                <div class="product-actions">
+        <div class="products-section">
+            <h2 class="section-title">Pterodactyl/Reseller Panel</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3 class="product-name">RAM 3GB</h3>
+                    <div class="product-price">1K</div>
+                    <p class="price-variant">Pterodactyl panel with 3GB RAM</p>
                     <button class="buy-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Order Now
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">RAM 5GB</h3>
+                    <div class="product-price">2K</div>
+                    <p class="price-variant">Pterodactyl panel with 5GB RAM</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">RAM 7GB</h3>
+                    <div class="product-price">5K</div>
+                    <p class="price-variant">Pterodactyl panel with 7GB RAM</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">RAM UNLI</h3>
+                    <div class="product-price">7K</div>
+                    <p class="price-variant">Unlimited RAM allocation</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">Reseller Panel <span class="badge badge-popular">POPULAR</span></h3>
+                    <div class="product-price">8K <span style="font-size:14px">/month</span></div>
+                    <p class="price-variant">Reseller package with special privileges</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
             </div>
             
-            <!-- Reseller Panel -->
-            <div class="product-card">
-                <div class="product-badge">Popular</div>
-                <div class="product-header">
-                    <h3>Reseller Panel</h3>
-                    <div class="product-price">8K <span>/month</span></div>
-                </div>
-                
-                <div class="product-features">
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Reseller panel access</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Marketing tools</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Special reseller price</span>
-                    </div>
-                </div>
-                
-                <div class="product-actions">
+            <h2 class="section-title">SC Bug WA</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3 class="product-name">SHISUI V1</h3>
+                    <div class="price-variant">5K (NO UP)</div>
+                    <div class="price-variant">7K (FREE UP 1x)</div>
                     <button class="buy-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Order Now
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">NIKA V12 G2</h3>
+                    <div class="product-price">35K</div>
+                    <div class="price-variant">NO UP</div>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">DAPZY G4</h3>
+                    <div class="product-price">15K</div>
+                    <div class="price-variant">NO UP</div>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">HOLDY V9</h3>
+                    <div class="product-price">25K</div>
+                    <div class="price-variant">NO UP</div>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
             </div>
             
-            <!-- SC Shisui -->
-            <div class="product-card">
-                <div class="product-header">
-                    <h3>SC Shisui</h3>
-                    <div class="product-price">5K <span>/month</span></div>
-                    <div class="price-variants">7K with free UP 1x</div>
-                </div>
-                
-                <div class="product-features">
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>SC Shisui access</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Stable connection</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>High speed</span>
-                    </div>
-                </div>
-                
-                <div class="product-actions">
+            <h2 class="section-title">Reseller/Owner Packages</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3 class="product-name">Reseller SHISUI</h3>
+                    <div class="product-price">10K</div>
                     <button class="buy-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Order Now
+                        <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
-            </div>
-            
-            <!-- Reseller Shisui -->
-            <div class="product-card">
-                <div class="product-header">
-                    <h3>Reseller Shisui</h3>
-                    <div class="product-price">10K <span>/month</span></div>
-                </div>
                 
-                <div class="product-features">
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Reseller Shisui access</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Free trial accounts</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Special price</span>
-                    </div>
-                </div>
-                
-                <div class="product-actions">
+                <div class="product-card">
+                    <h3 class="product-name">Owner SHISUI</h3>
+                    <div class="product-price">15K</div>
                     <button class="buy-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Order Now
+                        <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
-            </div>
-            
-            <!-- Owner Shisui -->
-            <div class="product-card">
-                <div class="product-badge">Exclusive</div>
-                <div class="product-header">
-                    <h3>Owner Shisui</h3>
-                    <div class="product-price">15K <span>/month</span></div>
-                </div>
                 
-                <div class="product-features">
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Owner Shisui access</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Full control panel</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Priority support</span>
-                    </div>
-                </div>
-                
-                <div class="product-actions">
+                <div class="product-card">
+                    <h3 class="product-name">Partner SHISUI</h3>
+                    <div class="product-price">20K</div>
                     <button class="buy-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Order Now
+                        <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
-            </div>
-            
-            <!-- Partner Shisui -->
-            <div class="product-card">
-                <div class="product-header">
-                    <h3>Partner Shisui</h3>
-                    <div class="product-price">20K <span>/month</span></div>
-                </div>
                 
-                <div class="product-features">
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Partner Shisui access</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Attractive commission</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Special support</span>
-                    </div>
-                </div>
-                
-                <div class="product-actions">
+                <div class="product-card">
+                    <h3 class="product-name">TK SHISUI</h3>
+                    <div class="product-price">25K</div>
                     <button class="buy-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Order Now
+                        <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
-            </div>
-            
-            <!-- TK Shisui -->
-            <div class="product-card">
-                <div class="product-header">
-                    <h3>TK Shisui</h3>
-                    <div class="product-price">25K <span>/month</span></div>
-                </div>
                 
-                <div class="product-features">
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>TK Shisui access</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Basic features</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Stable connection</span>
-                    </div>
-                </div>
-                
-                <div class="product-actions">
+                <div class="product-card">
+                    <h3 class="product-name">Mods SHISUI <span class="badge badge-new">NEW</span></h3>
+                    <div class="product-price">35K</div>
                     <button class="buy-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Order Now
+                        <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
-            </div>
-            
-            <!-- Mods Shisui -->
-            <div class="product-card">
-                <div class="product-badge">New</div>
-                <div class="product-header">
-                    <h3>Mods Shisui</h3>
-                    <div class="product-price">35K <span>/month</span></div>
-                </div>
                 
-                <div class="product-features">
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Mods Shisui access</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Extra features</span>
-                    </div>
-                    <div class="feature-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="Check Icon">
-                        <span>Premium support</span>
-                    </div>
-                </div>
-                
-                <div class="product-actions">
+                <div class="product-card">
+                    <h3 class="product-name">Reseller HOLDY</h3>
+                    <div class="product-price">35K</div>
                     <button class="buy-btn">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="Cart Icon">
-                        Order Now
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">Owner HOLDY</h3>
+                    <div class="product-price">45K</div>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">Reseller DAPZY</h3>
+                    <div class="product-price">30K</div>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
             </div>
         </div>
         
         <div class="contact-section">
-            <h3>Need help or have questions?</h3>
-            <a href="https://t.me/danzz_store_1" class="contact-info" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon">
-                <p>Contact Danz: <span>t.me/danzz_store_1</span></p>
+            <p class="contact-title">Need help or want to order?</p>
+            <a href="https://wa.me/6287826241859" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Chat via WhatsApp
             </a>
         </div>
     </div>
 
     <script>
-        // Simple category filter
+        // Product categories filter
         document.querySelectorAll('.category-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                document.querySelector('.category-btn.active').classList.remove('active');
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
                 this.classList.add('active');
                 
-                // In a real implementation, you would filter products here
-                // This is just UI demonstration
+                // Get category name
+                const category = this.textContent.trim();
+                
+                // Filter products (simplified example)
+                console.log(`Filtering by: ${category}`);
+                // In a real implementation, you would show/hide products here
             });
         });
         
-        // Buy button click handler
+        // Buy button functionality
         document.querySelectorAll('.buy-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                const productName = this.closest('.product-card').querySelector('h3').textContent;
-                const productPrice = this.closest('.product-card').querySelector('.product-price').textContent;
-                window.open(`https://t.me/danzz_store_1?text=Hi%20Danz,%20I%20want%20to%20buy%20${encodeURIComponent(productName)}%20(${encodeURIComponent(productPrice)})`, '_blank');
+                const productName = this.parentElement.querySelector('.product-name').textContent;
+                const productPrice = this.parentElement.querySelector('.product-price')?.textContent || '';
+                const priceVariant = this.parentElement.querySelector('.price-variant')?.textContent || '';
+                
+                // Open WhatsApp with pre-filled message
+                const message = `Hi Danz, I want to order: ${productName} ${productPrice} ${priceVariant}`;
+                const encodedMessage = encodeURIComponent(message.trim());
+                window.open(`https://wa.me/6287826241859?text=${encodedMessage}`, '_blank');
             });
         });
     </script>
