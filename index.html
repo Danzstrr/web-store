@@ -6,24 +6,26 @@
     <title>Danz Store - Toko Online Premium</title>
     <style>
         :root {
-            --primary: #4a89dc; /* Warna biru muda */
+            --primary: #4a89dc;
             --secondary: #5d9cec;
             --accent: #3bafda;
             --dark: #2c3e50;
             --light: #f5f7fa;
             --text: #434a54;
             --gray: #e6e9ed;
+            --whatsapp: #25D366;
+            --telegram: #0088cc;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #f0f2f5;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e6f0f9 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -34,10 +36,16 @@
         .store-container {
             background-color: white;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .store-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .header {
@@ -45,28 +53,48 @@
             color: white;
             padding: 30px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
         }
 
         .header h1 {
-            font-size: 28px;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .header p {
-            font-size: 14px;
+            font-size: 1rem;
             opacity: 0.9;
+            position: relative;
         }
 
         .categories {
             display: flex;
             background-color: var(--gray);
             overflow-x: auto;
-            padding: 0 15px;
+            padding: 0 20px;
+            scrollbar-width: none;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
         }
 
         .category-btn {
-            padding: 12px 20px;
+            padding: 15px 25px;
             background: none;
             border: none;
             font-weight: 600;
@@ -75,6 +103,7 @@
             white-space: nowrap;
             position: relative;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .category-btn.active {
@@ -89,60 +118,107 @@
             width: 100%;
             height: 3px;
             background-color: var(--primary);
+            animation: underline 0.3s ease;
+        }
+
+        @keyframes underline {
+            from { width: 0; }
+            to { width: 100%; }
         }
 
         .products-section {
-            padding: 20px;
+            padding: 25px;
         }
 
         .section-title {
-            font-size: 20px;
+            font-size: 1.5rem;
             color: var(--dark);
-            margin: 15px 0;
+            margin: 20px 0;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--gray);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--primary);
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .product-card {
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
             transition: all 0.3s ease;
-            border: 1px solid #eee;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
 
         .product-name {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             color: var(--text);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
         }
 
-        .price-variant {
-            font-size: 16px;
+        .product-name::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .product-card:hover .product-name::after {
+            width: 80px;
+        }
+
+        .price-info {
+            font-size: 1rem;
             color: #666;
-            margin: 5px 0;
+            margin: 10px 0;
+            font-style: italic;
         }
 
         .buy-btn {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 6px;
+            padding: 12px 20px;
+            border-radius: 8px;
             font-weight: 600;
             width: 100%;
             cursor: pointer;
@@ -150,13 +226,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(74, 137, 220, 0.3);
         }
 
         .buy-btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 137, 220, 0.4);
         }
 
         .buy-btn:active {
@@ -165,20 +242,28 @@
 
         .contact-section {
             background-color: var(--gray);
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             margin-top: 20px;
             border-radius: 0 0 15px 15px;
         }
 
         .contact-title {
-            font-size: 16px;
+            font-size: 1.1rem;
             color: var(--text);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
-        .whatsapp-btn {
-            background-color: var(--primary);
+        .contact-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .contact-btn {
             color: white;
             text-decoration: none;
             padding: 12px 25px;
@@ -188,12 +273,36 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .whatsapp-btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(74, 137, 220, 0.3);
+        .whatsapp-btn {
+            background-color: var(--whatsapp);
+        }
+
+        .telegram-btn {
+            background-color: var(--telegram);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .payment-section {
+            margin-top: 25px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .payment-title {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 600;
         }
 
         .payment-methods {
@@ -201,47 +310,74 @@
             flex-wrap: wrap;
             gap: 15px;
             justify-content: center;
-            margin-top: 15px;
         }
 
         .payment-method {
-            background-color: white;
-            padding: 10px 15px;
+            background-color: var(--light);
+            padding: 12px 20px;
             border-radius: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            gap: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .payment-method img {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .payment-detail {
+            font-size: 0.95rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: #888;
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
         }
 
         @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
             .products-grid {
                 grid-template-columns: 1fr;
             }
             
-            .header h1 {
-                font-size: 24px;
+            .category-btn {
+                padding: 12px 18px;
+                font-size: 0.9rem;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="store-container">
         <div class="header">
             <h1>Danz Store</h1>
-            <p>Toko Online Premium & Layanan Web</p>
+            <p>Toko Online Premium dengan Sistem Order Otomatis</p>
         </div>
         
         <div class="categories">
             <button class="category-btn active">Semua Produk</button>
             <button class="category-btn">SC Bug WA</button>
-            <button class="category-btn">Reseller/Owner</button>
+            <button class="category-btn">Paket Reseller</button>
+            <button class="category-btn">Panel</button>
             <button class="category-btn">Jasa Web</button>
         </div>
         
@@ -250,7 +386,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <h3 class="product-name">SC SHISUI</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -258,15 +394,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">SC HOLDY</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
-                    <button class="buy-btn">
-                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                    </button>
-                </div>
-                
-                <div class="product-card">
-                    <h3 class="product-name">SC NIKA</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -274,7 +402,15 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">SC DAPZY</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">SC NIKA</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -284,24 +420,24 @@
             <h2 class="section-title">Paket Reseller/Owner</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <h3 class="product-name">Reseller SHISUI</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <h3 class="product-name">RESELER SHISUI</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">Owner SHISUI</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <h3 class="product-name">OWNER SHISUI</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">Partner SHISUI</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <h3 class="product-name">PARTNER SHISUI</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -309,39 +445,74 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">TK SHISUI</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">Mods SHISUI</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <h3 class="product-name">MODS SHISUI</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">Reseller HOLDY</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <h3 class="product-name">RESELER HOLDY</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">Owner HOLDY</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <h3 class="product-name">OWNER HOLDY</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">Reseller DAPZY</h3>
-                    <div class="price-variant">Harga hubungi Danz</div>
+                    <h3 class="product-name">RESELER DAPZY</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Panel</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3 class="product-name">RAM 3GB</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">RAM 5GB</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">RAM UNLI</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">RESELER PANEL</h3>
+                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -351,16 +522,16 @@
             <h2 class="section-title">Jasa Pembuatan Web</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <h3 class="product-name">Jasa Bikin Web Store</h3>
-                    <div class="price-variant">Harga negotiable</div>
+                    <h3 class="product-name">Jasa Buat Web Payment</h3>
+                    <p class="price-info">Harga negotiable</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">Jasa Bikin Web Payment</h3>
-                    <div class="price-variant">Harga negotiable</div>
+                    <h3 class="product-name">Jasa Buat Web Store</h3>
+                    <p class="price-info">Harga negotiable</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -369,15 +540,30 @@
         </div>
         
         <div class="contact-section">
-            <p class="contact-title">Untuk informasi harga dan pemesanan:</p>
-            <a href="https://wa.me/6287826241859" class="whatsapp-btn">
-                <i class="fab fa-whatsapp"></i> Hubungi Danz via WhatsApp
-            </a>
+            <h3 class="contact-title">Hubungi Danz untuk Informasi dan Pemesanan</h3>
             
-            <div class="payment-methods">
-                <div class="payment-method">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/GoPay.svg/1200px-GoPay.svg.png" alt="GoPay">
-                    <span>087826241859</span>
+            <div class="contact-options">
+                <a href="https://wa.me/6287826241859" class="contact-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                
+                <a href="https://t.me/danzz_store_1" class="contact-btn telegram-btn">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+            </div>
+            
+            <p class="note">Jika WA tidak merespon dalam 24 jam, berarti sedang kenon. Silahkan hubungi via Telegram</p>
+            
+            <div class="payment-section">
+                <h3 class="payment-title">Pembayaran via GoPay</h3>
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/GoPay.svg/1200px-GoPay.svg.png" alt="GoPay">
+                        <div>
+                            <div class="payment-detail">087826241859</div>
+                            <div class="payment-detail">a.n M**** M*****H</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -410,7 +596,7 @@
                 const productName = this.parentElement.querySelector('.product-name').textContent;
                 
                 // Buka WhatsApp dengan pesan otomatis
-                const message = `Halo Danz, saya tertarik dengan: ${productName}`;
+                const message = `Halo Danz, saya ingin memesan: ${productName}`;
                 const encodedMessage = encodeURIComponent(message.trim());
                 window.open(`https://wa.me/6287826241859?text=${encodedMessage}`, '_blank');
             });
