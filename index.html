@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danz Store - Premium Panels & Tools</title>
+    <title>Danz Store - Premium Web Services</title>
     <style>
         :root {
-            --primary: #25D366; /* WhatsApp green */
-            --secondary: #128C7E;
-            --accent: #FF9800;
-            --dark: #075E54;
-            --light: #DCF8C6;
-            --text: #333333;
-            --gray: #ECE5DD;
+            --primary: #4a89dc; /* Light blue */
+            --secondary: #5d9cec;
+            --accent: #3bafda;
+            --dark: #2c3e50;
+            --light: #f5f7fa;
+            --text: #434a54;
+            --gray: #e6e9ed;
         }
         
         * {
@@ -43,7 +43,7 @@
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
         }
 
@@ -200,26 +200,30 @@
         .whatsapp-btn:hover {
             background-color: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
+            box-shadow: 0 5px 15px rgba(74, 137, 220, 0.3);
         }
 
-        .badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: 8px;
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
         }
 
-        .badge-new {
-            background-color: var(--accent);
-            color: white;
+        .payment-method {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .badge-popular {
-            background-color: #E91E63;
-            color: white;
+        .payment-method img {
+            width: 24px;
+            height: 24px;
         }
 
         @media (max-width: 768px) {
@@ -238,98 +242,46 @@
     <div class="store-container">
         <div class="header">
             <h1>Danz Store</h1>
-            <p>Premium Panels & Tools</p>
+            <p>Premium Web Services & Solutions</p>
         </div>
         
         <div class="categories">
             <button class="category-btn active">All Products</button>
-            <button class="category-btn">Pterodactyl Panels</button>
             <button class="category-btn">SC Bug WA</button>
             <button class="category-btn">Reseller/Owner</button>
+            <button class="category-btn">Web Services</button>
         </div>
         
         <div class="products-section">
-            <h2 class="section-title">Pterodactyl/Reseller Panel</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <h3 class="product-name">RAM 3GB</h3>
-                    <div class="product-price">1K</div>
-                    <p class="price-variant">Pterodactyl panel with 3GB RAM</p>
-                    <button class="buy-btn">
-                        <i class="fab fa-whatsapp"></i> Order Now
-                    </button>
-                </div>
-                
-                <div class="product-card">
-                    <h3 class="product-name">RAM 5GB</h3>
-                    <div class="product-price">2K</div>
-                    <p class="price-variant">Pterodactyl panel with 5GB RAM</p>
-                    <button class="buy-btn">
-                        <i class="fab fa-whatsapp"></i> Order Now
-                    </button>
-                </div>
-                
-                <div class="product-card">
-                    <h3 class="product-name">RAM 7GB</h3>
-                    <div class="product-price">5K</div>
-                    <p class="price-variant">Pterodactyl panel with 7GB RAM</p>
-                    <button class="buy-btn">
-                        <i class="fab fa-whatsapp"></i> Order Now
-                    </button>
-                </div>
-                
-                <div class="product-card">
-                    <h3 class="product-name">RAM UNLI</h3>
-                    <div class="product-price">7K</div>
-                    <p class="price-variant">Unlimited RAM allocation</p>
-                    <button class="buy-btn">
-                        <i class="fab fa-whatsapp"></i> Order Now
-                    </button>
-                </div>
-                
-                <div class="product-card">
-                    <h3 class="product-name">Reseller Panel <span class="badge badge-popular">POPULAR</span></h3>
-                    <div class="product-price">8K <span style="font-size:14px">/month</span></div>
-                    <p class="price-variant">Reseller package with special privileges</p>
-                    <button class="buy-btn">
-                        <i class="fab fa-whatsapp"></i> Order Now
-                    </button>
-                </div>
-            </div>
-            
             <h2 class="section-title">SC Bug WA</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <h3 class="product-name">SHISUI V1</h3>
-                    <div class="price-variant">5K (NO UP)</div>
-                    <div class="price-variant">7K (FREE UP 1x)</div>
+                    <h3 class="product-name">SC SHISUI</h3>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">NIKA V12 G2</h3>
-                    <div class="product-price">35K</div>
-                    <div class="price-variant">NO UP</div>
+                    <h3 class="product-name">SC HOLDY</h3>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">DAPZY G4</h3>
-                    <div class="product-price">15K</div>
-                    <div class="price-variant">NO UP</div>
+                    <h3 class="product-name">SC NIKA</h3>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">HOLDY V9</h3>
-                    <div class="product-price">25K</div>
-                    <div class="price-variant">NO UP</div>
+                    <h3 class="product-name">SC DAPZY</h3>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
@@ -340,7 +292,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <h3 class="product-name">Reseller SHISUI</h3>
-                    <div class="product-price">10K</div>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
@@ -348,7 +300,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">Owner SHISUI</h3>
-                    <div class="product-price">15K</div>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
@@ -356,7 +308,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">Partner SHISUI</h3>
-                    <div class="product-price">20K</div>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
@@ -364,15 +316,15 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">TK SHISUI</h3>
-                    <div class="product-price">25K</div>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
                 
                 <div class="product-card">
-                    <h3 class="product-name">Mods SHISUI <span class="badge badge-new">NEW</span></h3>
-                    <div class="product-price">35K</div>
+                    <h3 class="product-name">Mods SHISUI</h3>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
@@ -380,7 +332,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">Reseller HOLDY</h3>
-                    <div class="product-price">35K</div>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
@@ -388,7 +340,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">Owner HOLDY</h3>
-                    <div class="product-price">45K</div>
+                    <div class="price-variant">Price varies - contact for details</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
@@ -396,7 +348,26 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">Reseller DAPZY</h3>
-                    <div class="product-price">30K</div>
+                    <div class="price-variant">Price varies - contact for details</div>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Web Services</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3 class="product-name">Web Store Creation</h3>
+                    <div class="price-variant">Custom pricing - contact for quote</div>
+                    <button class="buy-btn">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </button>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-name">Web Payment System</h3>
+                    <div class="price-variant">Custom pricing - contact for quote</div>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
@@ -405,10 +376,17 @@
         </div>
         
         <div class="contact-section">
-            <p class="contact-title">Need help or want to order?</p>
+            <p class="contact-title">For pricing and orders, contact Danz:</p>
             <a href="https://wa.me/6287826241859" class="whatsapp-btn">
                 <i class="fab fa-whatsapp"></i> Chat via WhatsApp
             </a>
+            
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/GoPay.svg/1200px-GoPay.svg.png" alt="GoPay">
+                    <span>087826241859</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -437,11 +415,9 @@
         document.querySelectorAll('.buy-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const productName = this.parentElement.querySelector('.product-name').textContent;
-                const productPrice = this.parentElement.querySelector('.product-price')?.textContent || '';
-                const priceVariant = this.parentElement.querySelector('.price-variant')?.textContent || '';
                 
                 // Open WhatsApp with pre-filled message
-                const message = `Hi Danz, I want to order: ${productName} ${productPrice} ${priceVariant}`;
+                const message = `Hi Danz, I'm interested in: ${productName}`;
                 const encodedMessage = encodeURIComponent(message.trim());
                 window.open(`https://wa.me/6287826241859?text=${encodedMessage}`, '_blank');
             });
