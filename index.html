@@ -33,6 +33,31 @@
             padding: 20px;
         }
 
+        /* Running Text Style */
+        .marquee {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
         .store-container {
             background-color: white;
             border-radius: 15px;
@@ -57,28 +82,16 @@
             overflow: hidden;
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-        }
-
         .header h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 10px;
-            position: relative;
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .header p {
             font-size: 1rem;
             opacity: 0.9;
-            position: relative;
         }
 
         .categories {
@@ -118,12 +131,6 @@
             width: 100%;
             height: 3px;
             background-color: var(--primary);
-            animation: underline 0.3s ease;
-        }
-
-        @keyframes underline {
-            from { width: 0; }
-            to { width: 100%; }
         }
 
         .products-section {
@@ -187,30 +194,13 @@
             font-weight: 700;
             color: var(--text);
             margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
         }
 
-        .product-name::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .product-card:hover .product-name::after {
-            width: 80px;
-        }
-
-        .price-info {
-            font-size: 1rem;
-            color: #666;
+        .product-price {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
             margin: 10px 0;
-            font-style: italic;
         }
 
         .buy-btn {
@@ -234,10 +224,6 @@
         .buy-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(74, 137, 220, 0.4);
-        }
-
-        .buy-btn:active {
-            transform: translateY(0);
         }
 
         .contact-section {
@@ -367,6 +353,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Running Text -->
+    <div class="marquee">
+        <div class="marquee-content">
+            🚀 PROMO KHUSUS HARI INI! 🚀 Dapatkan diskon 10% untuk pembelian pertama! Hubungi Danz via WhatsApp 6287826241859 atau Telegram t.me/danzz_store_1 🚀 Jangan lewatkan kesempatan ini! 🚀
+        </div>
+    </div>
+
     <div class="store-container">
         <div class="header">
             <h1>Danz Store</h1>
@@ -386,7 +379,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <h3 class="product-name">SC SHISUI</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -394,7 +387,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">SC HOLDY</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -402,7 +395,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">SC DAPZY</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -410,7 +403,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">SC NIKA</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -421,7 +414,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <h3 class="product-name">RESELER SHISUI</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -429,7 +422,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">OWNER SHISUI</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -437,7 +430,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">PARTNER SHISUI</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -445,7 +438,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">TK SHISUI</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -453,7 +446,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">MODS SHISUI</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -461,7 +454,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">RESELER HOLDY</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -469,7 +462,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">OWNER HOLDY</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -477,7 +470,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">RESELER DAPZY</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Harga: Tanya Danz</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -488,7 +481,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <h3 class="product-name">RAM 3GB</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Rp 1.000</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -496,7 +489,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">RAM 5GB</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Rp 3.000</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -504,7 +497,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">RAM UNLI</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Rp 5.000</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -512,7 +505,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">RESELER PANEL</h3>
-                    <p class="price-info">Harga silahkan tanyakan ke Danz</p>
+                    <p class="product-price">Rp 8.000</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -523,7 +516,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <h3 class="product-name">Jasa Buat Web Payment</h3>
-                    <p class="price-info">Harga negotiable</p>
+                    <p class="product-price">Rp 4.000</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -531,7 +524,7 @@
                 
                 <div class="product-card">
                     <h3 class="product-name">Jasa Buat Web Store</h3>
-                    <p class="price-info">Harga negotiable</p>
+                    <p class="product-price">Rp 7.000</p>
                     <button class="buy-btn">
                         <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </button>
@@ -594,9 +587,10 @@
         document.querySelectorAll('.buy-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const productName = this.parentElement.querySelector('.product-name').textContent;
+                const productPrice = this.parentElement.querySelector('.product-price').textContent;
                 
                 // Buka WhatsApp dengan pesan otomatis
-                const message = `Halo Danz, saya ingin memesan: ${productName}`;
+                const message = `Halo Danz, saya ingin memesan: ${productName} (${productPrice})`;
                 const encodedMessage = encodeURIComponent(message.trim());
                 window.open(`https://wa.me/6287826241859?text=${encodedMessage}`, '_blank');
             });
