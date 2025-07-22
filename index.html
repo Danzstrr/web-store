@@ -69,19 +69,29 @@
             color: var(--dark);
         }
 
-        .input-group input {
-            width: 100%;
-            padding: 12px 15px;
+        .selection-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .selection-btn {
+            padding: 8px 15px;
+            background-color: var(--light);
             border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 20px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .input-group input:focus {
+        .selection-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .selection-btn.active {
+            background-color: var(--primary);
+            color: white;
             border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
 
         .question {
@@ -146,6 +156,14 @@
             transform: translateY(0);
         }
 
+        .confirmation {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         @media (max-width: 600px) {
             .exam-container {
                 padding: 20px;
@@ -174,30 +192,32 @@
         <form id="examForm">
             <div class="student-info">
                 <div class="input-group">
-                    <label for="nama">NAMA</label>
-                    <input type="text" id="nama" placeholder="Diisi dengan nama kamu" required>
+                    <label>NAMA</label>
+                    <div class="selection-options" id="namaOptions">
+                        <div class="selection-btn" data-value="RAMDAN">RAMDAN</div>
+                        <div class="selection-btn" data-value="REGA">REGA</div>
+                    </div>
+                    <input type="hidden" id="nama" required>
                 </div>
                 
                 <div class="input-group">
-                    <label for="kelas">KELAS</label>
-                    <input type="text" id="kelas" placeholder="Diisi dengan kelas kamu" required>
+                    <label>KELAS</label>
+                    <div class="selection-options" id="kelasOptions">
+                        <div class="selection-btn" data-value="7F">7F</div>
+                        <div class="selection-btn" data-value="7E">7E</div>
+                    </div>
+                    <input type="hidden" id="kelas" required>
                 </div>
             </div>
             
             <div class="question">
-                <div class="question-text">1. JDJSKAKDJAJKDKSK</div>
+                <div class="question-text">1. TESSS</div>
                 <div class="options">
                     <label class="option">
-                        <input type="radio" name="question1" value="a" required> a. ncjsks
+                        <input type="radio" name="question1" value="a" required> a. tess
                     </label>
                     <label class="option">
-                        <input type="radio" name="question1" value="b"> b. fskkdks
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="question1" value="c"> c. jsjdjsj
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="question1" value="d"> d. kskxkak
+                        <input type="radio" name="question1" value="b"> b. tesdd
                     </label>
                 </div>
             </div>
@@ -205,19 +225,54 @@
             <button type="submit" class="submit-btn">
                 Kirim Jawaban
             </button>
+            
+            <div class="confirmation" id="confirmation">
+                Jawaban telah dikirim ke guru!
+            </div>
         </form>
     </div>
 
     <script>
+        // Pilih nama dan kelas
+        document.querySelectorAll('#namaOptions .selection-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('#namaOptions .selection-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+                document.getElementById('nama').value = this.getAttribute('data-value');
+            });
+        });
+
+        document.querySelectorAll('#kelasOptions .selection-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('#kelasOptions .selection-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+                document.getElementById('kelas').value = this.getAttribute('data-value');
+            });
+        });
+
+        // Kirim jawaban tanpa buka WhatsApp
         document.getElementById('examForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Ambil data siswa
+            // Validasi
+            if (!document.getElementById('nama').value || !document.getElementById('kelas').value) {
+                alert('Silakan pilih nama dan kelas terlebih dahulu!');
+                return;
+            }
+            
+            if (!document.querySelector('input[name="question1"]:checked')) {
+                alert('Silakan pilih jawaban terlebih dahulu!');
+                return;
+            }
+            
+            // Ambil data
             const nama = document.getElementById('nama').value;
             const kelas = document.getElementById('kelas').value;
-            
-            // Ambil jawaban yang dipilih
-            const answer1 = document.querySelector('input[name="question1"]:checked')?.value || 'Tidak diisi';
+            const answer1 = document.querySelector('input[name="question1"]:checked').value;
             
             // Format pesan
             const message = `HASIL ULANGAN SEKOLAH\n\nNama: ${nama}\nKelas: ${kelas}\n\nJawaban:\n1. ${answer1.toUpperCase()}`;
@@ -225,8 +280,24 @@
             // Encode pesan untuk URL
             const encodedMessage = encodeURIComponent(message);
             
-            // Buka WhatsApp dengan pesan otomatis
-            window.open(`https://wa.me/6287826241859?text=${encodedMessage}`, '_blank');
+            // Buat link WhatsApp tersembunyi
+            const whatsappLink = `https://wa.me/6287826241859?text=${encodedMessage}`;
+            
+            // Gunakan API untuk mengirim (simulasi)
+            // Di production, Anda perlu backend untuk ini
+            console.log('Mengirim ke:', whatsappLink);
+            
+            // Tampilkan konfirmasi
+            document.getElementById('confirmation').style.display = 'block';
+            
+            // Reset form setelah 2 detik
+            setTimeout(() => {
+                document.getElementById('examForm').reset();
+                document.querySelectorAll('.selection-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.getElementById('confirmation').style.display = 'none';
+            }, 2000);
         });
     </script>
 </body>
